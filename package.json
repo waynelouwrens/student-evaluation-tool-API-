@@ -4,7 +4,11 @@
   "description": "RESTful API to manage Student Evaluations",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "start": "node ."
+  },
   "dependencies": {
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "mongoose": "^4.13.2"
   }
 }
