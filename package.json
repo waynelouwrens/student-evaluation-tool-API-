@@ -1,0 +1,7 @@
+{
+  "name": "student-evaluation-tool-API",
+  "version": "1.0.0",
+  "description": "RESTful API to manage Student Evaluations",
+  "main": "index.js",
+  "license": "MIT"
+}
