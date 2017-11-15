@@ -1,5 +1,11 @@
 const Batch = require('./batch')
+const User = require('./user')
+const Student = require('./student')
+const Evaluation = require('./evaluation')
 
 module.exports = {
-  Batch
+  Batch,
+  User,
+  Student,
+  Evaluation
 }

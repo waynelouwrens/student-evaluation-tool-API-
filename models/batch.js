@@ -1,13 +1,14 @@
 const mongoose = require('../config/database')
 const { Schema } = mongoose
+const students = require('./student').schema
 
 const batchSchema = new Schema({
-  number: { type: Number, required: true },
+  batchNumber: { type: Number, required: true },
   start_date: { type: Date, required: true },
   end_date: { type: Date, required: true },
-  authorId: { type: Schema.Types.ObjectId, ref: 'users' },
+  students: [students],
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now }
-})
+});
 
 module.exports = mongoose.model('batches', batchSchema)
