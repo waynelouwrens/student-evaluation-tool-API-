@@ -2,7 +2,6 @@ const router = require('express').Router()
 const { User } = require('../models')
 const passport = require('../config/auth')
 
-
 router.post('/users', (req, res, next) => {
   User.register(new User({name: req.body.name, email: req.body.email}), req.body.password, (err, user) => {
     if (err) {

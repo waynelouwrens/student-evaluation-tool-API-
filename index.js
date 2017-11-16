@@ -1,19 +1,23 @@
 const express = require('express')
+const cors = require('cors')
 const bodyParser = require('body-parser')
-const { batches, users } = require('./routes')
 const passport = require('./config/auth')
+const { batches, users, sessions } = require('./routes')
+const http = require('http')
 
-const PORT = process.env.PORT || 3030
+const port = process.env.PORT || 3030
 
-let app = express()
+const app = express()
+const server = http.Server(app)
 
 app
+  .use(cors())
   .use(bodyParser.urlencoded({ extended: true }))
   .use(bodyParser.json())
   .use(passport.initialize())
 
-  // batches routes
   .use(users)
+  .use(sessions)
   .use(batches)
 
   // catch 404 and forward to error handler
@@ -23,7 +27,6 @@ app
     next(err)
   })
 
-  // final error handler
   .use((err, req, res, next) => {
     res.status(err.status || 500)
     res.send({
@@ -32,6 +35,6 @@ app
     })
   })
 
-  .listen(PORT, () => {
-    console.log(`Server is listening on port ${PORT}`)
+server.listen(port, () => {
+    console.log(`Server is listening on port ${port}`)
   })
